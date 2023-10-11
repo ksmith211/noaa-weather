@@ -9,7 +9,7 @@ jobs:
 - name: unit-test-frontend 
   plan:
   - get: noaa-weather-pipeline 
-    trigger: true
+    trigger: true # trigger on every push to repo
   - task: install-frontend-dependencies
     config:
       platform: linux
@@ -20,5 +20,5 @@ jobs:
       inputs: # pass concourse-examples into this task step
       - name: noaa-weather-pipeline
       run:
-        path: cat
-        args: ["docker-compose.yaml"]
+        path: ls
+        args: []
