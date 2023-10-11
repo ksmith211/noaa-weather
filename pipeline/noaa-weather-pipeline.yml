@@ -6,10 +6,10 @@ resources:
     uri: https://github.com/ksmith211/noaa-weather.git
 
 jobs:
-- name: install-frontend-dependencies 
+- name: unit-test-frontend 
   plan:
   - get: noaa-weather-pipeline 
-  - task: cat-readme
+  - task: install-frontend-dependencies
     config:
       platform: linux
       image_resource:
@@ -20,4 +20,4 @@ jobs:
       - name: noaa-weather-pipeline
       run:
         path: cat
-        args: ["concourse-examples/README.md"]
+        args: ["docker-compose.yaml"]
