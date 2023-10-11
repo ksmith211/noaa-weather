@@ -21,4 +21,4 @@ jobs:
       - name: noaa-weather-pipeline
       run:
         path: ls
-        args: []
+        args: ["noaa-weather-pipeline"]
