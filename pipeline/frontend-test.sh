@@ -7,8 +7,8 @@ if [ -d "../frontend" ]; then
     npm test --watchAll
 fi
 
-if [ -d "noaa-weather-pipeline" ]; then
-    cd noaa-weather-pipeline/frontend
+if [ -d "noaa-weather" ]; then
+    cd noaa-weather/frontend
     npm install
     npm test --watchAll
-fi
+fi 
