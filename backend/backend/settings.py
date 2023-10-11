@@ -25,9 +25,11 @@ SECRET_KEY = 'django-insecure-jjzc$pq&8^*(&7q%hob5icl1$s@6_g-=v%^6hx@n%c&)(-h9sj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0'] # this is the host that Docker uses to run application
 
-
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
