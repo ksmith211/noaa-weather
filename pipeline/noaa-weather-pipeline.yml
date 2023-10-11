@@ -9,6 +9,7 @@ jobs:
 - name: unit-test-frontend 
   plan:
   - get: noaa-weather-pipeline 
+    trigger: true
   - task: install-frontend-dependencies
     config:
       platform: linux
