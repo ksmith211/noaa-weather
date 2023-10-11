@@ -10,7 +10,7 @@ jobs:
   plan:
   - get: noaa-weather 
     trigger: true # trigger on every push to repo
-  - task: install-frontend-dependencies
+  - task: unit-test-frontend
     config:
       platform: linux
       image_resource:
