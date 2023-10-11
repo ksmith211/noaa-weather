@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import * as Mui from '@mui/material';
-import Map from './WeatherMap'
+import Map from './WeatherMap'; 
 
 
 function App() {

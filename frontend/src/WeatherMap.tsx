@@ -54,18 +54,21 @@ interface WeatherData {
     useEffect(() => {
       const ids = stationData.map(station => station.id).join(',');
       console.log(ids);
-      axios.get(`https://api.weather.gov/stations/${ids}/observations/latest`)
-        .then(response => {
-          const data = response.data.map((observation: any) => ({
-            temperature: observation.temperature.value,
-            humidity: observation.relativeHumidity.value,
-            pressure: observation.barometricPressure.value
-          }));
-          setWeatherData(data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+    
+      if (Array.isArray(stationData) && stationData.length > 0) {
+        axios.get(`https://api.weather.gov/stations/${ids}/observations/latest`)
+          .then(response => {
+            const data = response.data.map((observation: any) => ({
+              temperature: observation.temperature.value,
+              humidity: observation.relativeHumidity.value,
+              pressure: observation.barometricPressure.value
+            }));
+            setWeatherData(data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
     }, [stationData]);
   
     return (
