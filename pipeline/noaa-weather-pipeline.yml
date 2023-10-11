@@ -1,5 +1,5 @@
 resources:
-- name: noaa-weather-pipeline 
+- name: noaa-weather 
   type: git
   icon: github
   source:
@@ -8,7 +8,7 @@ resources:
 jobs:
 - name: unit-test-frontend 
   plan:
-  - get: noaa-weather-pipeline 
+  - get: noaa-weather 
     trigger: true # trigger on every push to repo
   - task: install-frontend-dependencies
     config:
@@ -18,7 +18,7 @@ jobs:
         source:
           repository: busybox
       inputs: # pass concourse-examples into this task step
-      - name: noaa-weather-pipeline
+      - name: noaa-weather
       run:
-        path: ls
-        args: ["noaa-weather-pipeline"]
+        path: sh
+        args: ["noaa-weather/pipeline/frontend-test.sh"]
