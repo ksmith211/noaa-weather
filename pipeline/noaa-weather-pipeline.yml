@@ -16,7 +16,7 @@ jobs:
       image_resource:
         type: registry-image
         source:
-          repository: node:14.17.3
+          repository: node/14.17.3-alpine3.14
       inputs: # pass concourse-examples into this task step
       - name: noaa-weather
       run:
