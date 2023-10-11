@@ -23,3 +23,21 @@ jobs:
       run:
         path: sh
         args: ["noaa-weather/pipeline/frontend-test.sh"]
+
+- name: unit-test-backend 
+  plan:
+  - get: noaa-weather 
+    trigger: true # trigger on every push to repo
+  - task: unit-test-backend
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: python
+          tag: 3.8.13-bullseye
+      inputs: # pass concourse-examples into this task step
+      - name: noaa-weather
+      run:
+        path: sh
+        args: ["noaa-weather/pipeline/backend-test.sh"]
